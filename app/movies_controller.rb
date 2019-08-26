@@ -67,9 +67,7 @@ def can_find_using_where_clause_and_be_sorted
 end
 
 def can_be_found_updated_and_saved
-  # Updtate the title "Awesome Flick" to "Even Awesomer Flick", save it, then return it
-  movie = Movie.create(title: "Awesome Flick")
-  find_title =  movie.find_by(title: "Awesome Flick" )
+  movie =  Movie.find_by(title: "Awesome Flick")
   movie.title = 'Even Awesomer Flick'
   movie.save
   movie
@@ -78,8 +76,7 @@ end
 def can_update_using_update_method
   # Update movie title to "Wat, huh?"
   Movie.create(title: "Wat?")
-  __
-  __
+  Movie.update(:title => "Wat, huh?" )
 end
 
 def can_update_multiple_items_at_once
@@ -87,18 +84,18 @@ def can_update_multiple_items_at_once
   5.times do |i|
     Movie.create(title: "Movie_#{i}", release_date: 2000+i)
   end
-  __
+  Movie.update(:title =>"A Movie")
 end
 
 def can_destroy_a_single_item
   Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
-  __
-  __
+  # Movie.update(:title => nil )
+  Movie.destroy(1)
 end
 
 def can_destroy_all_items_at_once
   10.times do |i|
     Movie.create(title: "Movie_#{i}")
   end
-  __
+  Movie.destroy_all
 end
