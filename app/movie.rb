@@ -35,11 +35,11 @@ def can_be_created_in_a_block(title="Home Alone", release_date=1990)
 end
 
 def can_get_the_first_item_in_the_database
-  Movie[0]
+  movie = Movie.first
 end
 
 def can_get_the_last_item_in_the_database
-  Movie[-1]
+  movie = Movie.last
 end
 
 def can_get_size_of_the_database
@@ -47,7 +47,7 @@ def can_get_size_of_the_database
 end
 
 def can_find_the_first_item_from_the_database_using_id
-  Movie.find(1).title
+  movie = Movie.find(1)
 end
 
 def can_find_by_multiple_attributes
@@ -92,7 +92,7 @@ end
 def can_destroy_a_single_item
   Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
   Movie.find(title: "That One Where the Guy Kicks Another Guy Once")
-  Movie.destroy(title: "That One Where the Guy Kicks Another Guy Once")
+  Movie.destroy
 end
 
 def can_destroy_all_items_at_once
