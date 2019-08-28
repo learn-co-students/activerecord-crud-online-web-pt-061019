@@ -35,11 +35,11 @@ def can_be_created_in_a_block(title="Home Alone", release_date=1990)
 end
 
 def can_get_the_first_item_in_the_database
-  Movie.first.title
+  Movie[0]
 end
 
 def can_get_the_last_item_in_the_database
-  Movie.last.title
+  Movie[-1]
 end
 
 def can_get_size_of_the_database
@@ -69,9 +69,9 @@ end
 def can_be_found_updated_and_saved
   # Update the title "Awesome Flick" to "Even Awesomer Flick", save it, then return it
   Movie.create(title: "Awesome Flick")
-  Movie.find_by(title: "Awesome Flick")
-  Movie.update(title: "Even Awesomer Flick")
-  Movie.save
+  movie = Movie.find_by(title: "Awesome Flick")
+  movie.update(title: "Even Awesomer Flick")
+  movie.save
 end
 
 def can_update_using_update_method
@@ -91,8 +91,8 @@ end
 
 def can_destroy_a_single_item
   Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
-  Movie.find_by(title: "That One Where the Guy Kicks Another Guy Once")
-  Movie.destroy
+  Movie.find(title: "That One Where the Guy Kicks Another Guy Once")
+  Movie.destroy(title: "That One Where the Guy Kicks Another Guy Once")
 end
 
 def can_destroy_all_items_at_once
