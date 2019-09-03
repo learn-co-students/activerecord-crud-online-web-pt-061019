@@ -6,9 +6,9 @@
 # end                              # end
 
 def can_be_instantiated_and_then_saved
-  movie = __
+  movie = Movie.new
   movie.title = "This is a title."
-  __
+  movie.save
 end
 
 def can_be_created_with_a_hash_of_attributes
@@ -20,14 +20,21 @@ def can_be_created_with_a_hash_of_attributes
       lead: "Paul Newman",
       in_theaters: false
   }
-  movie = __
+  movie = Movie.new(title: attributes[:title], release_date: attributes[:release_date], director: attributes[:director], lead: attributes[:lead], in_theaters: attributes[:in_theaters])
+  # movie = Movie.new
+  # movie.title = attributes[0]
+  # movie.release_date = attributes[0]
+  # movie.director = attributes[0]
+  # movie.lead = attributes[0]
+  # movie.in_theaters = attributes[0]
+  movie.save
 end
 
-def can_be_created_in_a_block(args = __)
+def can_be_created_in_a_block(args = [__])
   # If no arguments are passed, use default values:
   # title == "Home Alone"
   # release_date == 1990
-  
+
   Movie.create do |m|
     __
   end
@@ -58,7 +65,7 @@ def can_find_by_multiple_attributes
 end
 
 def can_find_using_where_clause_and_be_sorted
-  # For this test return all movies released after 2002 and ordered by 
+  # For this test return all movies released after 2002 and ordered by
   # release date descending
   __
 end
@@ -96,5 +103,5 @@ def can_destroy_all_items_at_once
   10.times do |i|
     Movie.create(title: "Movie_#{i}")
   end
-  __
+  Movie.all.delete
 end
